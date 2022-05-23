@@ -19,7 +19,6 @@ const typeCanvas = document.createElement('canvas');
 const typeContext = typeCanvas.getContext('2d');
 
 
-
 const sketch = ({context, width, height, frame}) => {
   const cell = 20;
   const cols = Math.floor(width/cell);
@@ -82,31 +81,22 @@ const sketch = ({context, width, height, frame}) => {
 
       const glyph = getGlyph(r);
 
-// remove below to make cleaner
-      // context.font = `${cell*2}px ${fontFamily}`;
-      // if (Math.random()<0.1)context.font = `${cell*2}px ${fontFamily}`;
       context.fillStyle = 'dimGrey';
-      // context.fillStyle = `rgb(${r}, ${g}, ${b})`;
       const n = random.noise2D(x + frame * 10, y, .001);
       context.save();
+      
       context.translate(x,y); 
       context.translate(cell*0.5, cell*0.5);
-
       context.fillText(glyph,5,0);
-      
       context.fillText(glyph,50,0);
       context.fillStyle = 'white';
       context.fillText(glyph,55,0);
       context.fillStyle = 'blue';
       context.fillText(glyph,50,0);
       context.fillStyle = 'silver';
-      context.fillText(glyph,0,0);
-  
-      
+      context.fillText(glyph,0,0);    
       
       context.beginPath();
-      // context.arc(0,0,cell*0.5, 0, Math.PI*2);
-      // context.fillText(text,0,0);
       context.fill();
 
       context.restore();
